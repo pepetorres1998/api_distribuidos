@@ -2,7 +2,7 @@ class Client < ApplicationRecord
 
   scope :not_expired, lambda { where("updated_at > ?", 10.seconds.ago) }
   def is_best
-    Client.order(cpu: :asc).first.id == id
+    Client.order(cpu: :asc).not_expired.first.id == id
   end
 
   def clients

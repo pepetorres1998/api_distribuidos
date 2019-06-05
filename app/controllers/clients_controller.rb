@@ -17,6 +17,8 @@ class ClientsController < ApplicationController
     # :ip, :cpu, :ram, :server, :active
     client.cpu = params[:cpu]
     client.ram = params[:ram]
+    client.os = params[:os]
+    client.version = params[:version]
     client.save
 
     if client.save

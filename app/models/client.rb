@@ -8,7 +8,7 @@ class Client < ApplicationRecord
     if is_best
       Client.order(cpu: :asc)
     else
-      self
+      [self]
     end
   end
 

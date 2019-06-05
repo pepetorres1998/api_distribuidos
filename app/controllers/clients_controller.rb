@@ -20,7 +20,7 @@ class ClientsController < ApplicationController
     client.save
 
     if client.save
-      render json: { server: client.is_best }
+      render json: { server: client.is_best, clients: client.clients }
     else
       render json: client.errors, status: :unprocessable_entity
     end

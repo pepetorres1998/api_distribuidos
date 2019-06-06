@@ -28,6 +28,20 @@ class ClientsController < ApplicationController
     end
   end
 
+  def activate
+    client = Client.find_or_create_by(ip: params[:ip])
+    client.active = true
+    client.save
+    render json: client
+  end
+
+  def deactivate
+    client = Client.find_or_create_by(ip: params[:ip])
+    client.active = false
+    client.save
+    render json: client
+  end
+
   # POST /clients
   # POST /clients.json
   def create

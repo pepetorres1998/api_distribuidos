@@ -15,7 +15,11 @@ class Client < ApplicationRecord
 
   def get_ranking
     ranking = 750 + (cpu.to_f*250 + ram.to_f*500)
-    return ranking.to_i
+    if ranking.nil?
+      return 750.to_i
+    else
+      return ranking.to_i
+    end
   end
 
 end

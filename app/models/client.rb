@@ -7,10 +7,15 @@ class Client < ApplicationRecord
 
   def clients
     if is_best
-      Client.order(cpu: :asc).not_expired
+      Client.order(ranking: :asc).not_expired
     else
       [self]
     end
+  end
+
+  def get_ranking
+    ranking = 750 + (cpu.to_f*250 + ram.to_f*500)
+    return ranking.to_i
   end
 
 end

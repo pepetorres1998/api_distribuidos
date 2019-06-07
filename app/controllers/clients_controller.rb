@@ -19,6 +19,7 @@ class ClientsController < ApplicationController
     client.ram = params[:ram]
     client.os = params[:os]
     client.version = params[:version]
+    client.ranking = client.get_ranking
     client.save
 
     if client.save
